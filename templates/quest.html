@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='wwww.css') }}">
+    <title>Оценка годности мемов</title>
+<style>
+</style>
+</head>
+<body id="1">
+<div id="menu" class="menu">
+	<a href="/" style="margin-left: 10px;">Стартовая страница</a>
+	<a href="/stats" style="margin-left: 1610px;">Статистика</a>
+</div>
+<br><br>
+<form action="/process" method = 'GET'>
+    <fieldset>
+    <legend id="para1"><b>Оценка годности мемов</b></legend><br>
+    <legend id="para2">Цель этого опроса заключается в определении годности некоторых мемов</legend>
+	<br><br>
+	<div id="person"><br><b>Ваше имя?</b>
+    <input id="person1" type="text" name="name" required pattern='[A-Za-zА-Яа-яЁё]+'><br>
+    <b>Ваша фамилия?</b><br>
+    <input id="person1" type="text" name="surname" required pattern='[A-Za-zА-Яа-яЁё]+'><br>
+	<b>Укажите ваш пол</b><br>
+	<select id="person1" name="action">
+    <option id="person1" name="gender" value="male">male</option>
+	<option id="person1" name="gender" value="female">female</option>
+    <option id="person1" name="gender" value="other">other</option>
+	</select><br><br>
+	</div><br>
+	<div id="extra"><br><b>Ваш родной язык?</b><br>
+    <input id="person1" type="text" name="lang" required pattern='[A-Za-zА-Яа-яЁё]+'><br>
+	<b>Ваш город рождения?</b><br>
+    <input id="person1" type="text" name="place" required pattern='[A-Za-zА-Яа-яЁё]+'><br>
+	<b>Укажите ваше образование</b><br>
+	<select id="person1" name="action">
+    <option id="person1" name="education" value="lower secondary">lower secondary<br>
+	<option id="person1" name="education" value="full secondary">full secondary<br>
+    <option id="person1" name="education" value="professional secondary">professional secondary<br>
+	<option id="person1" name="education" value="higher">higher<br>
+	</select>
+	<br>
+    <b>Сколько Вам лет?</b><br>
+	<input id="person1" type="text" name="age" required pattern='[0-9]+' placeholder=18-100><br>
+	<br>
+	</div>
+	<br><br>
+	<div id="blank"><br>
+	{% for question in questions %}
+    <div class="row">
+        <p id="stimulus" class="col-md-12">{{question.text}}</p>
+        <table id="table" class="col-md-12">
+			<tr>
+                <td><input class="radio" type="radio" name="q{{ question.id }}" value=1></td>
+                <td><input class="radio" type="radio" name="q{{ question.id }}" value=2></td>
+                <td><input class="radio" type="radio" name="q{{ question.id }}" value=3></td>
+                <td><input class="radio" type="radio" name="q{{ question.id }}" value=4></td>
+                <td><input class="radio" type="radio" name="q{{ question.id }}" value=5></td>
+            </tr>
+            <tr>
+                <td>омерзительно</td>
+                <td>так себе</td>
+                <td>норм</td>
+                <td>хорошо</td>
+                <td>заебумба</td>
+            </tr>
+        </table>
+    </div>
+	<br>
+	{% endfor %}
+	</div><br>
+	<p><input id="submit" type="submit" value="Отправить"></p>
+    </fieldset>
+</form>
+</body>
+</html>

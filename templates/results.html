@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='phonexx.css') }}">
+  <title>{{ title }}</title>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+</head>
+
+<body>
+<div id="menu" class="menu">
+	<a href="/" style="margin-left: 10px;">Стартовая страница</a>
+	<a href="/quest" style="margin-left: 1660px;">Опрос</a>
+</div><br>
+{{ df|safe }}<br><br>
+  <center>
+    <h1 id="para11">{{ title }}</h1><br><br>
+
+    <canvas id="chart" width="600" height="400"></canvas>
+    <script>
+      // bar chart data
+      var barData = {
+        labels : [
+          {% for item in labels %}
+            "{{ item }}",
+          {% endfor %}
+        ],
+        datasets : [{
+          fillColor: "#B1527A",
+          strokeColor: "#0254DA",
+          pointColor: "#365AEC",
+          pointStrokeColor: "#435808",
+          pointHighlightFill: "#435808",
+          pointHighlightStroke: "#435808",
+          bezierCurve : false,
+          data : [
+	    {% for item in values %}
+              {{ item }},
+            {% endfor %}]
+          }
+	]
+      }
+      Chart.defaults.global.animationSteps = 45;
+      Chart.defaults.global.tooltipYPadding = 16;
+      Chart.defaults.global.tooltipCornerRadius = 0;
+      Chart.defaults.global.tooltipTitleFontStyle = "normal";
+      Chart.defaults.global.tooltipFillColor = "#99C225";
+      Chart.defaults.global.animationEasing = "easeOutBounce";
+      Chart.defaults.global.responsive = false;
+      Chart.defaults.global.scaleLineColor = "#220858";
+      Chart.defaults.global.scaleFontSize = 16;
+      Chart.defaults.global.scaleFontColor = "#647E86";
+      // get bar chart canvas
+      var mychart = document.getElementById("chart").getContext("2d");
+      steps = 10
+      max = {{ max }}
+      // draw bar chart
+      var LineChartDemo = new Chart(mychart).Line(barData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: Math.ceil(max / steps),
+        scaleStartValue: 0,
+        scaleShowVerticalLines: true,
+        scaleShowGridLines : true,
+        barShowStroke : true,
+        scaleShowLabels: true,
+        bezierCurve: false,
+      });
+    </script>
+  </center>
+</body>
+</html>
