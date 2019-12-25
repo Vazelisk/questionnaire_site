@@ -1,0 +1,34 @@
+body {
+  background: peachpuff linear-gradient(90deg,
+    rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, .4) 50%
+    ) center center / 2em;
+}
+
+#menu {
+font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+width: 100%;
+text-align: auto;
+font-size: 16px;
+background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+box-shadow: 0 0 0 5px #7D2464;
+}
+
+#para11 {
+font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+font-size: 30px;
+text-align: center;
+box-shadow: 0 0 0 10px #E4E4D8;
+width: 50%;
+background: #EEB3B3;
+margin: auto;
+}
+
+#stimulus {
+font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+font-size: 20px;
+font-weight: bolder;
+box-shadow: 0 0 0 5px #E840E3;
+width: 70%;
+background: #EEB3B3;
+margin: auto;
+}
